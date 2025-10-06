@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PG3", "PG3.vcxproj", "{F66A6CD1-747C-4030-BE8B-604FE98FC463}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目", "ソリューション項目", "{4B9434C7-DC22-4CFE-BCCF-EC674A46EF96}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F66A6CD1-747C-4030-BE8B-604FE98FC463}.Debug|x64.ActiveCfg = Debug|x64
+		{F66A6CD1-747C-4030-BE8B-604FE98FC463}.Debug|x64.Build.0 = Debug|x64
+		{F66A6CD1-747C-4030-BE8B-604FE98FC463}.Debug|x86.ActiveCfg = Debug|Win32
+		{F66A6CD1-747C-4030-BE8B-604FE98FC463}.Debug|x86.Build.0 = Debug|Win32
+		{F66A6CD1-747C-4030-BE8B-604FE98FC463}.Release|x64.ActiveCfg = Release|x64
+		{F66A6CD1-747C-4030-BE8B-604FE98FC463}.Release|x64.Build.0 = Release|x64
+		{F66A6CD1-747C-4030-BE8B-604FE98FC463}.Release|x86.ActiveCfg = Release|Win32
+		{F66A6CD1-747C-4030-BE8B-604FE98FC463}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {042773AB-AECB-4393-983C-91A328ACB434}
+	EndGlobalSection
+EndGlobal
