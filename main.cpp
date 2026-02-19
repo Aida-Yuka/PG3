@@ -1,25 +1,25 @@
 #include <stdio.h>
 
-template <typename Type>
-
-Type/*型*/ Min(Type a, Type b) {
-
-	///関数テンプレート
-	if (a > b) {
-		return static_cast<Type>(b);
+int Recursive(int kyuuryou, int zikan, int kotei)
+{
+	//if (kyuuryou >= 100000)
+	if (kyuuryou >= kotei)
+	{
+		printf("%d時間後に超える", zikan);
+		return zikan;
 	}
-	else {
-		return static_cast<Type> (a);
-	}
+	printf("%d　%d\n", kyuuryou, kotei);
+	kyuuryou = kyuuryou *2 - 50;
+
+	return (Recursive(kyuuryou, ++zikan, kotei+1226));
 }
-
 
 int main() {
 
-	//計算と結果出力
-	printf("%d\n", Min<int>(128, 256));
-	printf("%f\n", Min<float>(52.5f, 55.0f));
-	printf("%lf\n", Min<double>(3.14159265, 2.7182818281));
+	int saiki = 100;
+	int ippan = 1226;
+	int zikan = 0;
+	int resullt1 = Recursive(saiki, zikan, ippan);
 
 	return 0;
 }
