@@ -1,39 +1,26 @@
-#include <cstdio>
+#include <stdio.h>
+#include "IShape.h"
+#include "Circle.h"
+#include "Rectangle.h"
 
-using namespace std;
+int main(void) {
 
-class Animal {
-public:
-    // 鳴く関数（純粋仮想関数）
-    virtual void sound() const = 0;
-};
+	IShape* shape[2];
 
+	shape[0] = new Circle;
+	shape[1] = new Rectangle;
 
-class dog : public Animal{
-public:
-    void sound() const override {
-        printf("イヌ鳴き声:ワン\n");
-    }
-};
+	printf("円の半径:4\n短形の底辺:2\n短形の高さ:3\n");
 
+	//面積を計算
+	for (int i = 0; i < 2; i++)
+		shape[i]->Size();
 
-class cat : public Animal {
-public:
-    void sound() const override {
-        printf("ネコ鳴き声:ニャー\n");
-    }
-};
+	printf("\n");
 
-int main() {
+	//面積を画面に表示
+	for (int i = 0; i < 2; i++)
+		shape[i]->Draw();
 
-    Animal* animal1 = new dog();
-    Animal* animal2 = new cat();
-
-    animal1->sound();
-    animal2->sound();
-
-    delete animal1;
-    delete animal2;
-
-    return 0;
+	return 0;
 }
