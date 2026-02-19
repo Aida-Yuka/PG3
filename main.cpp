@@ -1,55 +1,63 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <windows.h>
+#include <iostream>
+using namespace std;
 
-// コールバック関数のプロトタイプ宣言
-typedef void (*Callback)(int roll,int userGuess);
+class Enemy {
+public:
+    void Update();   // 状態の更新
 
-// サイコロの出目を決定する関数
-int roll_dice()
-{
-    return rand() % 6 + 1;/*ランダム関数で1～6のどれかを返す*/;
+    void Approach(); // 接近
+    void Attack();   // 攻撃
+    void Retreat();  // 離脱
+
+    // 関数ポインタテーブル
+    static void (Enemy::* table[])();
+
+private:
+    int index = 0; // 関数テーブルのインデックス
+};
+
+void Enemy::Approach() {
+    cout << "敵が接近！" << endl;
 }
 
-//遅延実行関数
-void DelayReveal(Callback fn, unsigned int delayMs, int roll, int userGuess)
-{
-    printf("判定中...\n");
-    Sleep(delayMs);
-    fn(roll, userGuess);
+void Enemy::Attack() {
+    cout << "敵が攻撃！" << endl;
 }
 
-//判定関数
-void ShowResult(int roll, int userGuess)
-{
-    if ((roll % 2 == 1 && userGuess == 1) || (roll % 2 == 0 && userGuess == 2)) {
-        printf("正解\n");
+void Enemy::Retreat() {
+    cout << "敵が離脱！" << endl;
+}
+
+void Enemy::Update() {
+
+    // 関数テーブルから関数を実行
+    (this->*table[index])();
+
+    cout << "次の状態に移行 (0: はい、 他: いいえ)";
+    int input;
+    cin >> input;
+
+    if (input == 0) {
+        index = (index + 1) % 3;
     }
-    else {
-        printf("不正解\n");
-    }
-
-    printf("サイコロの目は%d\n", roll);
 }
 
-// メイン関数
+// メンバ関数ポインタテーブル
+void (Enemy::* Enemy::table[])() = {
+    &Enemy::Approach, // インデックス0
+    &Enemy::Attack,   // インデックス1
+    &Enemy::Retreat   // インデックス2
+};
+
 int main()
 {
-    int userGuess = 0;//プレイヤーの入力した関数
-    int roll = 0;//サイコロの目
+    Enemy enemy;
 
-    //ユーザーからの入力
-    printf("サイコロの出目が奇数(1)か偶数(2)か入力:");
-    scanf_s("%d", &userGuess);
-
-    srand((unsigned)time(NULL));
-    roll = roll_dice();
-
-    Callback callback = ShowResult;
-
-    //三秒後に結果表示
-    DelayReveal(callback, 3000, roll, userGuess);
+    while (1)
+    {
+        /*敵クラス実体enemyを更新*/
+        enemy.Update();
+    }
 
     return 0;
 }
